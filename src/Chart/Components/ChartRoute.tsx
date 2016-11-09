@@ -8,6 +8,7 @@ import { ChartActions } from "../chartActions";
 import { IInjectedProps } from "react-router";
 import { action } from "../../Common/actionFactory";
 import { deserialize } from "json-typescript-mapper";
+import { ChartContainer } from "./ChartContainer";
 
 interface IProps extends IInjectedProps, IDispatcher {
 }
@@ -38,8 +39,6 @@ export default class ChartRoute extends React.Component<IProps, {}> {
     }
 
     public render(): JSX.Element {
-        return (
-            <div>chart</div>
-        );
+        return <ChartContainer/>
     }
 }
