@@ -7,8 +7,14 @@ export namespace Chart {
         Data: Point[] = [];
     }
 
-    export class Point {
+    export class BackendPoint {
         timeStamp: string;
         value: number;
     }
+
+    export class Point {
+        timeStamp: Date;
+        value: number;
+    }
+
 }

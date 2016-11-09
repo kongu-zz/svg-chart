@@ -20,17 +20,26 @@ export namespace ChartActions {
                     "Content-Type": "application/json"
                 });
 
-            if (!response.ok && response.status != 404) {
+            if (!response.ok && response.status !== 404) {
                 dispatch(action(ChartActions.FAILED_GET_DATA));
                 return;
             }
 
             let result: Chart.Point[] = [];
-            if (response.status == 404) {
+            if (response.status === 404) {
                 dispatch(action(RECEIVED_DATA, result));
             } else {
 
-                result = await response.json();
+                let fetchedResult: Chart.BackendPoint[] = await response.json();
+                result = fetchedResult.map<Chart.Point>((item): Chart.Point => {
+
+                    let point = new Chart.Point();
+
+                    point.timeStamp = new Date(item.timeStamp);
+                    point.value = item.value;
+
+                    return point;
+                });
 
             }
 

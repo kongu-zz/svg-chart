@@ -7,6 +7,7 @@ import { Model } from "../../Model/modelRoot";
 import { IDispatcher } from "../../Common/reduxHelper";
 import { action } from "../../Common/actionFactory";
 import { ChartActions } from "../chartActions";
+import { Graph } from "./Graph";
 
 
 interface IProps extends IDispatcher {
@@ -34,9 +35,7 @@ export class ChartContainer extends React.Component<IProps, IState> {
                 return <span>Loading data...</span>;
             case FetchState.Finished:
                 return (
-                    <svg>
-                        <circle cx={100} cy={100} r={20} fill="green" />
-                    </svg>
+                    <Graph width={800} height={300} data={this.props.model.Data}/>
                 );
             case FetchState.Error:
                 return <span>Error fetching data</span>;
