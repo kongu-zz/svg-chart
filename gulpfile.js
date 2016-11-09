@@ -204,7 +204,7 @@ gulp.task('publish', function(done) {
     });
 });
 
-gulp.task("mock:server", function(callback) {
+gulp.task("run", function(callback) {
     runSequence("mock", "react:development", function() {
         callback();
     });

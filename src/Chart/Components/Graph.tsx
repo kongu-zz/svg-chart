@@ -27,17 +27,17 @@ interface GraphSettings {
     strokeColor: string;
 }
 
-const converToGraphData = (data: Chart.Point[], width: number, height: number): GrapthPoint[] => {
+const converToGraphData = (data: Chart.Point[], width: number, height: number, settings: GraphSettings): GrapthPoint[] => {
     let first = data[0].timeStamp.getTime();
     let last = data[data.length - 1].timeStamp.getTime();
     let diff = last - first;
 
-    let xPrev = 40;
+    let xPrev = settings.yAxisWidth;
     let timePrev = first;
     let graphData = data.map<GrapthPoint>((item, index): GrapthPoint => {
         let x: number;
         if (index === 0) {
-            x = 0 + 40;
+            x = 0 + settings.yAxisWidth;
         } else {
             let pointsTimeDiff = item.timeStamp.getTime() - timePrev;
             x = Math.round(xPrev + (pointsTimeDiff / diff * width));
@@ -51,24 +51,24 @@ const converToGraphData = (data: Chart.Point[], width: number, height: number): 
     return graphData;
 };
 
-const makeBodyPath = (graphData: GrapthPoint[], height: number) => {
-    let x = 40;
-    let y = height; // - 100;
+const makeBodyPath = (graphData: GrapthPoint[], height: number, settings: GraphSettings) => {
+    let x = settings.yAxisWidth;
+    let y = height;
     let d = [`M ${x} ${y}`];
 
     let collector = graphData.map((chunk): any => {
         let xNext = x + chunk.x;
-        let yNext = y - chunk.y * 3;
+        let yNext = y - chunk.y * settings.yScale;
         return `L ${xNext} ${yNext}`;
     });
 
     return d.concat(collector).join(" ");
 };
 
-const Body = (props: { data: Chart.Point[]; width: number; height: number; }) => {
+const Body = (props: { data: Chart.Point[]; width: number; height: number; settings: GraphSettings}) => {
 
     return (
-        <path d={makeBodyPath(converToGraphData(props.data, props.width, props.height), props.height)}
+        <path d={makeBodyPath(converToGraphData(props.data, props.width, props.height, props.settings), props.height, props.settings)}
             stroke="#74a3c7"
             strokeWidth={2}
             fill="none"
@@ -76,16 +76,16 @@ const Body = (props: { data: Chart.Point[]; width: number; height: number; }) =>
     );
 };
 
-const makeDataPoints = (data: Chart.Point[], width: number, height: number) => {
-    let graphData = converToGraphData(data, width, height);
+const makeDataPoints = (data: Chart.Point[], width: number, height: number, settings: GraphSettings) => {
+    let graphData = converToGraphData(data, width, height, settings);
 
-    let x = 40;
+    let x = settings.yAxisWidth;
     let y = height;
 
     let points: JSX.Element[] = [];
     graphData.map((chunk): any => {
         let xNext = x + chunk.x;
-        let yNext = y - chunk.y * 3;
+        let yNext = y - chunk.y * settings.yScale;
         points.push(
             <circle
                 cx={xNext} cy={yNext} r={5}
@@ -97,19 +97,19 @@ const makeDataPoints = (data: Chart.Point[], width: number, height: number) => {
     return points;
 };
 
-const makeYAxis = (width: number, height: number) => {
+const makeYAxis = (width: number, height: number, settings: GraphSettings) => {
     let lines: JSX.Element[] = [];
-    let step = 20;
+    let step = settings.yStep;
     let virtualHeight = height / 3;
     for (let i = 0; i < virtualHeight / step + 1; i++) {
-        let lineHeight = height + 60 - (i * 20 * 3);
+        let lineHeight = height + settings.xAxisWidth - (i * step * 3);
         lines.push(<line
-            x1={40}
+            x1={settings.yAxisWidth}
             y1={lineHeight}
-            x2={width + 40}
+            x2={width + settings.yAxisWidth}
             y2={lineHeight}
             stroke="#ebedef" strokeWidth={2} />);
-        let xAxisNumber = i * 20 - 20;
+        let xAxisNumber = i * step - step;
         if (xAxisNumber < 0) {
             continue;
         }
@@ -120,7 +120,7 @@ const makeYAxis = (width: number, height: number) => {
     return lines;
 };
 
-const makeXAxis = (width: number, height: number, data: Chart.Point[]) => {
+const makeXAxis = (width: number, height: number, data: Chart.Point[], settings: GraphSettings) => {
     let months: JSX.Element[] = [];
     let first = data[0].timeStamp;
     let last = data[data.length - 1].timeStamp;
@@ -151,21 +151,21 @@ const makeXAxis = (width: number, height: number, data: Chart.Point[]) => {
 export class Graph extends React.Component<IProps, {}> {
 
     public render(): JSX.Element {
-        let lines = makeYAxis(this.props.width, this.props.height);
+        let lines = makeYAxis(this.props.width, this.props.height, this.props.settings);
 
-        let months = makeXAxis(this.props.width, this.props.height, this.props.data);
+        let months = makeXAxis(this.props.width, this.props.height, this.props.data, this.props.settings);
 
         return (
             <div>
-                <svg width={this.props.width + 40} height={this.props.height + 60} fill="#ff00ff">
-                    <rect x={40} y={0} width={this.props.width} height={this.props.height} fill="#f6f7f8" stroke="#f6f7f8" />
-                    <rect x={0} y={0} width={40} height={this.props.height} fill="#f6f7f8" stroke="#f6f7f8" />
-                    <rect x={0} y={this.props.height} width={this.props.width + 40} height={60} fill="#f6f7f8" stroke="#f6f7f8" />
+                <svg width={this.props.width + this.props.settings.yAxisWidth} height={this.props.height + this.props.settings.xAxisWidth} fill="#ff00ff">
+                    <rect x={this.props.settings.yAxisWidth} y={0} width={this.props.width} height={this.props.height} fill="#f6f7f8" stroke="#f6f7f8" />
+                    <rect x={0} y={0} width={this.props.settings.yAxisWidth} height={this.props.height} fill="#f6f7f8" stroke="#f6f7f8" />
+                    <rect x={0} y={this.props.height} width={this.props.width + this.props.settings.yAxisWidth} height={this.props.settings.xAxisWidth} fill="#f6f7f8" stroke="#f6f7f8" />
 
                     {lines}
                     {months}
-                    <Body width={this.props.width - 40} height={this.props.height} data={this.props.data} />
-                    {makeDataPoints(this.props.data, this.props.width - 40, this.props.height)}
+                    <Body width={this.props.width - this.props.settings.yAxisWidth} height={this.props.height} data={this.props.data} settings={this.props.settings}/>
+                    {makeDataPoints(this.props.data, this.props.width - this.props.settings.yAxisWidth, this.props.height, this.props.settings)}
                 </svg>
                 <ReactTooltip type="light" border={true} />
             </div>
