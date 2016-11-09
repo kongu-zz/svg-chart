@@ -86,7 +86,7 @@ gulp.task("react:development", function() {
         },
 
         externals: {
-            "config": JSON.stringify(require("./config.prod.json"))
+            "config": JSON.stringify(require("./config.dev.json"))
         }
     };
 
