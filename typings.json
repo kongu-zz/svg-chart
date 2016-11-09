@@ -1,0 +1,33 @@
+{
+  "name": "svg-chart",
+  "dependencies": {
+    "history": "registry:npm/history#2.0.0+20160607172317",
+    "object-assign": "registry:npm/object-assign#4.0.1+20160301180549",
+    "react-redux": "registry:npm/react-redux#4.4.0+20160614222153",
+    "react-router": "registry:npm/react-router#2.4.0+20160723033700",
+    "react-router-redux": "registry:npm/react-router-redux#4.0.0+20160602212457",
+    "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
+  },
+  "globalDependencies": {
+    "base16": "registry:dt/base16#1.0.0+20160902130643",
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "chai-datetime": "registry:dt/chai-datetime#0.0.0+20160317120654",
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "enzyme": "registry:dt/enzyme#2.4.1+20160709041153",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "node": "registry:env/node#6.0.0+20160723033700",
+    "query-string": "registry:dt/query-string#3.0.0+20160331065456",
+    "react": "registry:dt/react#0.14.0+20160817201227",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-intl": "registry:dt/react-intl#2.0.0+20160412155000",
+    "react-widgets": "registry:dt/react-widgets#3.2.1+20160417150457",
+    "redux-devtools": "registry:dt/redux-devtools#3.0.0+20160703120921",
+    "redux-devtools-dock-monitor": "registry:dt/redux-devtools-dock-monitor#1.1.1+20160902130643",
+    "redux-devtools-log-monitor": "registry:dt/redux-devtools-log-monitor#1.0.11+20160902130643",
+    "sinon": "registry:dt/sinon#1.16.0+20160517064723",
+    "superagent": "registry:dt/superagent#2.0.0+20160906143408",
+    "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20160728142841"
+  }
+}

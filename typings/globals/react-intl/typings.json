@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/7e656a65e70709d8d8068b6dff1875155e44166e/react-intl/react-intl.d.ts",
+    "raw": "registry:dt/react-intl#2.0.0+20160412155000",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/7e656a65e70709d8d8068b6dff1875155e44166e/react-intl/react-intl.d.ts"
+  }
+}

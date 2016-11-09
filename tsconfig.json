@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "es2015",
+        "target": "es6",
+        "moduleResolution": "node",
+        //"baseUrl": "./src",
+        //"sourceRoot": "",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noEmitHelpers": false,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "noEmitOnError": true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true
+            // "strictNullChecks": true
+    },
+    "awesomeTypescriptLoaderOptions": {
+        "useBabel": true,
+        "useCache": true
+    },
+    "exclude": [
+            "node_modules"
+        ] //,
+        //"files": [
+        // "./typings/index.d.ts"//,
+        //"./src/index.dev.tsx"
+        //]
+}
