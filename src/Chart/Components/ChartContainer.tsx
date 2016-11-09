@@ -8,6 +8,7 @@ import { IDispatcher } from "../../Common/reduxHelper";
 import { action } from "../../Common/actionFactory";
 import { ChartActions } from "../chartActions";
 import { Graph } from "./Graph";
+const ReactTooltip = require("react-tooltip");
 
 
 interface IProps extends IDispatcher {
@@ -35,7 +36,19 @@ export class ChartContainer extends React.Component<IProps, IState> {
                 return <span>Loading data...</span>;
             case FetchState.Finished:
                 return (
-                    <Graph width={800} height={300} data={this.props.model.Data}/>
+                    <Graph
+                        width={900}
+                        height={300}
+                        data={this.props.model.Data}
+                        settings={{
+                            xAxisWidth: 60,
+                            yAxisWidth: 40,
+                            yScale: 3,
+                            yStep: 20,
+                            bgColor: "#f6f7f8",
+                            strokeColor: "#74a3c7"
+                        }}
+                        />
                 );
             case FetchState.Error:
                 return <span>Error fetching data</span>;
