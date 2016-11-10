@@ -8,7 +8,6 @@ import { IDispatcher } from "../../Common/reduxHelper";
 import { action } from "../../Common/actionFactory";
 import { ChartActions } from "../chartActions";
 import { Graph } from "./Graph";
-const ReactTooltip = require("react-tooltip");
 
 
 interface IProps extends IDispatcher {
