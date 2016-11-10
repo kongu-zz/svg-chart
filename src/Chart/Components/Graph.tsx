@@ -25,7 +25,7 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
         currentDate = first;
         while (currentDate < last) {
             months.push(
-                <text textAnchor="middle" stroke="none" fill="#99a0a9" x={currentX} y={this.props.height + 20}>
+                <text textAnchor="middle" stroke="none" fill="#99a0a9" x={currentX} y={this.props.height + 20} key={currentX}>
                     {moment(currentDate).format("MMMM")}
                 </text>
             );
@@ -46,13 +46,14 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
                 y1={lineHeight}
                 x2={this.props.width + this.props.settings.yAxisWidth}
                 y2={lineHeight}
-                stroke="#ebedef" strokeWidth={2} />);
+                stroke="#ebedef" strokeWidth={2}
+                key={i} />);
             let xAxisNumber = i * step - step;
             if (xAxisNumber < 0) {
                 continue;
             }
             lines.push(
-                <text textAnchor="middle" stroke="none" fill="#99a0a9" x="20" y={lineHeight}>{xAxisNumber}</text>
+                <text textAnchor="middle" stroke="none" fill="#99a0a9" x="20" y={lineHeight} key={`${i}2`}>{xAxisNumber}</text>
             );
         }
         return lines;

@@ -25,7 +25,7 @@ const converToGraphData = (props: GraphInterfaces.IGraphProps): GraphInterfaces.
         xPrev = x;
         timePrev = item.timeStamp.getTime();
 
-        console.log(`${item.timeStamp} - ${x}`);
+        // console.log(`${item.timeStamp} - ${x}`);
         return { y: item.value, x: x, original: item };
     });
     return graphData;
@@ -62,7 +62,7 @@ export const makeDataPoints = (props: GraphInterfaces.IGraphProps) => {
     let y = props.height;
 
     let points: JSX.Element[] = [];
-    graphData.map((chunk): any => {
+    graphData.map((chunk, index): any => {
         let xNext = x + chunk.x;
         let yNext = y - chunk.y * props.settings.yScale;
         points.push(
@@ -70,7 +70,8 @@ export const makeDataPoints = (props: GraphInterfaces.IGraphProps) => {
                 cx={xNext} cy={yNext} r={5}
                 data-tip={`${moment(chunk.original.timeStamp).format("DD MMMM YYYY")}<br/> $ ${chunk.original.value}`}
                 data-html={true}
-                fill={props.settings.strokeColor} stroke={props.settings.bgColor} strokeWidth={2} />
+                fill={props.settings.strokeColor} stroke={props.settings.bgColor} strokeWidth={2}
+                key={index} />
         );
     });
     return points;
