@@ -39,6 +39,14 @@ export namespace ChartActions {
                     point.value = item.value;
 
                     return point;
+                }).sort(function (a, b) {
+                    if (a.timeStamp > b.timeStamp) {
+                        return 1;
+                    }
+                    if (a.timeStamp < b.timeStamp) {
+                        return -1;
+                    }
+                    return 0;
                 });
 
             }

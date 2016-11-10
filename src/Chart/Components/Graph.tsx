@@ -18,14 +18,12 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
         while (currentDate < last) {
             numberOfMonths++;
             currentDate = moment(currentDate).add(1, "months").toDate();
-
         }
         let monthInterval = this.props.width / numberOfMonths;
 
         let currentX = monthInterval;
         currentDate = first;
         while (currentDate < last) {
-
             months.push(
                 <text textAnchor="middle" stroke="none" fill="#99a0a9" x={currentX} y={this.props.height + 20}>
                     {moment(currentDate).format("MMMM")}
@@ -40,9 +38,9 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
     private makeYAxis = () => {
         let lines: JSX.Element[] = [];
         let step = this.props.settings.yStep;
-        let virtualHeight = this.props.height / 3;
+        let virtualHeight = this.props.height / this.props.settings.yScale;
         for (let i = 0; i < virtualHeight / step + 1; i++) {
-            let lineHeight = this.props.height + this.props.settings.xAxisWidth - (i * step * 3);
+            let lineHeight = this.props.height + this.props.settings.xAxisWidth - (i * step * this.props.settings.yScale);
             lines.push(<line
                 x1={this.props.settings.yAxisWidth}
                 y1={lineHeight}
