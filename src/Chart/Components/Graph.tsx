@@ -21,7 +21,7 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
         }
         let monthInterval = this.props.width / numberOfMonths;
 
-        let currentX = monthInterval;
+        let currentX = monthInterval + this.props.settings.yStep;
         currentDate = first;
         while (currentDate < last) {
             months.push(

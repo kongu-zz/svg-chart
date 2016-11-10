@@ -34,15 +34,18 @@ const converToGraphData = (props: GraphInterfaces.IGraphProps): GraphInterfaces.
 const makeBodyPath = (graphData: GraphInterfaces.IGraphPoint[], height: number, settings: GraphInterfaces.IGraphSettings) => {
     let x = settings.yAxisWidth;
     let y = height;
-    let d = [`M ${x} ${y}`];
+    // let d: string[] = [];//[`M ${x} ${y}`];
 
-    let collector = graphData.map((chunk): any => {
+    let collector = graphData.map((chunk, index): any => {
         let xNext = x + chunk.x;
         let yNext = y - chunk.y * settings.yScale;
+        if (index === 0) {
+            return `M ${xNext} ${yNext}`;
+        }
         return `L ${xNext} ${yNext}`;
     });
 
-    return d.concat(collector).join(" ");
+    return collector.join(" ");
 };
 
 export const GraphBody = (props: GraphInterfaces.IGraphProps) => {
