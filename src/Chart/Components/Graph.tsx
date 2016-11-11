@@ -73,7 +73,7 @@ export class Graph extends React.Component<GraphInterfaces.IGraphProps, {}> {
                     <GraphBody {...this.props} />
                     {makeDataPoints(this.props)}
                 </svg>
-                <ReactTooltip type="light" border={true} />
+                <ReactTooltip type="light" border={true} /> {/* а вот зачем родительский*/}
             </div>
         );
     }
