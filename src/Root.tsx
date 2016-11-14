@@ -63,8 +63,8 @@ export default class Root extends React.Component<{}, {}> {
         return (
             <Provider store={store}>
                 <div>
-                    <ChartRoute/>
-                     <DevTools /> {/* вот зачем этот div - ctrl+h в браузерах отличных от хром*/}
+                    <ChartRoute />
+                    <DevTools /> {/* вот зачем этот div - ctrl+h в браузерах отличных от хром*/}
                 </div>
             </Provider>
         );
