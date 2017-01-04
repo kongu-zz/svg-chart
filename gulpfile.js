@@ -65,11 +65,11 @@ gulp.task("react:development", function() {
         module: {
             loaders: [{
                     test: /\.js$/,
-                    loaders: ["react-hot", "babel-loader"],
+                    loaders: ["react-hot-loader/webpack", "babel-loader"],
                     exclude: /node_modules/
                 }, {
                     test: /\.ts(x?)$/,
-                    loaders: ["react-hot", "babel-loader", "ts-loader"]
+                    loaders: ["react-hot-loader/webpack", "babel-loader", "ts-loader"]
                 }, {
                     test: /\.css$/,
                     loader: "style-loader!css-loader"

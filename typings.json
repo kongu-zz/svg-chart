@@ -12,6 +12,7 @@
     "base16": "registry:dt/base16#1.0.0+20160902130643",
     "chai": "registry:dt/chai#3.4.0+20160601211834",
     "chai-datetime": "registry:dt/chai-datetime#0.0.0+20160317120654",
+    "chai-things": "registry:dt/chai-things#0.0.0+20160906135318",
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "enzyme": "registry:dt/enzyme#2.4.1+20160709041153",
     "mocha": "registry:dt/mocha#2.2.5+20160619032855",

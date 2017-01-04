@@ -1,5 +1,6 @@
 /// <reference path="globals/base16/index.d.ts" />
 /// <reference path="globals/chai-datetime/index.d.ts" />
+/// <reference path="globals/chai-things/index.d.ts" />
 /// <reference path="globals/chai/index.d.ts" />
 /// <reference path="globals/classnames/index.d.ts" />
 /// <reference path="globals/enzyme/index.d.ts" />

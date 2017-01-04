@@ -9,7 +9,6 @@ import { action } from "../../Common/actionFactory";
 import { ChartActions } from "../chartActions";
 import { Graph } from "./Graph";
 
-
 interface IProps extends IDispatcher {
     model?: Chart.ChartModel;
 }

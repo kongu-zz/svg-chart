@@ -18,7 +18,7 @@ import { createDevTools } from "redux-devtools";
 import LogMonitor from "redux-devtools-log-monitor";
 import DockMonitor from "redux-devtools-dock-monitor";
 //const SliderMonitor = require("redux-slider-monitor").default;
-const Inspector = require("redux-devtools-inspector").default;
+//const Inspector = require("redux-devtools-inspector").default;
 
 // createDevTools takes a monitor and produces a DevTools component
 const DevTools = createDevTools(
