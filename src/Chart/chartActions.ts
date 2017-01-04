@@ -3,7 +3,10 @@ import { fetchBackendAsync } from "../Common/fetchBackendAsync";
 import { IDispatchFunc } from "../Common/reduxHelper";
 import { Chart } from "./chartModel";
 
-const config = require("config");
+const config = {
+    "serverUrl": "http://localhost:4001"
+};
+//require("config");
 
 export namespace ChartActions {
     export const REQUEST_START = "ChartActions.REQUEST_START";

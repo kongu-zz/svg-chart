@@ -78,8 +78,8 @@ describe("simple test", () => {
 
     it("should not be sort 3", () => {
 
-        let testArray = [10, 9, 1, 2];
-        let expectedArray = [1, 2, 9, 10];
+        let testArray = [10, 9, 1, 2, 1];
+        let expectedArray = [1, 1, 2, 9, 10];
 
         expect(testArray.sort(function (a, b) {
             if (a > b) {
@@ -97,6 +97,6 @@ describe("simple test", () => {
         let test: any = null;
         let expected = 0;
 
-        expect(test).eq(expected)
-    })
+        expect(test).not.eq(expected);
+    });
 });
